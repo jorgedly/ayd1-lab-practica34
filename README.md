@@ -1,27 +1,43 @@
-# Practica34
+# Practica 3 y 4 - Grupo 5
+Clonar y servir con git, nodejs y [angular](https://cli.angular.io/).
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+    $ git clone https://github.com/jorgedly/ayd1-lab-practica34.git practica
+    $ cd practica
+    $ npm install
+    $ ng serve
+## Funcionamiento de Angular material y Bulma
+Estan incluidas las bibliotecas de [angular material](https://material.angular.io/components/categories) que tiene los componentes y [bulma](https://bulma.io/documentation/columns/basics/) la disposicion de filas y columnas de forma mas sencilla.
 
-## Development server
+Para utilizar un componente como se muestra en la documentacion de angular material, junto a columnas con bulma, de forma general:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+    <div class="columns">
+        <div class="column">
+            <button mat-button>Click</button>
+        <div>
+    </div>
+    
+En el archivo [material.module.ts](https://github.com/jorgedly/ayd1-lab-practica34/blob/master/src/app/material.module.ts), se importan los componentes que se utilizaran en el proyecto. Por ejemplo, el componente boton, en la seccion de [api](https://material.angular.io/components/button/api) de angular material, requiere que sea importado como `import {MatButtonModule} from '@angular/material/button';`, por lo que en este archivo ya ha sido creado un arreglo 'mods' que tiene las importaciones. Ya estan agregadas las importaciones mas comunes, pero en caso de que no este aun, se debe agregar en este archivo.
 
-## Code scaffolding
+## Agregar un componente
+A diferencia de ionic, aqui no existen _pages_, y existen _modules_. Por facilidad y por ejemplo, para crear un componente **tabla**, se utiliza el comando en la terminal:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+    $ ng generate component components/tabla --module=app
+    
+O la forma abreviada:
 
-## Build
+    $ ng g c components/tabla --module=app
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Esto creara una carpeta con los archivos:
+* tabla.component.html - El codigo html del componente
+* tabla.component.scss - La hoja de estilos del componente usando [sass](https://sass-lang.com/). En general basta con css simple.
+* tabla.component.ts - El codigo ts del componente
+* tabla.component.spec.ts - El archivo a utilizar en las pruebas unitarias
 
-## Running unit tests
+Para utilizar un componente en otro componente, se utiliza el nombre de su modulo junto al nombre proporcionado. Para el ejemplo de **tabla**, se utilizaria:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+    <div>
+        <app-tabla></app-tabla>
+    </div>
+    <div>
+        <app-otro></app-otro>
+    </div>
