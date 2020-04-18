@@ -1,0 +1,6 @@
+[submodule "cliente"]
+	path = cliente
+	url = https://github.com/jorgedly/ayd1-lab-practica34-client
+[submodule "servidor"]
+	path = servidor
+	url = https://github.com/jorgedly/ayd1-lab-practica34-server
